@@ -1,0 +1,62 @@
+name: 'Call REST API when a file is pushed'
+
+on:
+  push:
+    branches: [ main ] # match specific branch
+
+jobs:
+  prepare-files:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix-added: ${{ steps.file-changes.outputs.files_added }}
+      matrix-modified: ${{ steps.file-changes.outputs.files_modified }}
+    steps:
+      - id: file-changes
+        uses: trilom/file-changes-action@v1.2.4
+
+  post-files-added:
+    needs: prepare-files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{ fromJSON(needs.prepare-files.outputs.matrix-added) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Echo file
+        run: |
+          echo ${{ matrix.file }} # to test if the correct file was passed
+
+      - name: Make an API call
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://elastic.snaplogic.com/api/1/rest/slsched/feed/AstraZeneca/projects/parthiban%20selvam/accEx%20Task?bearer_token=xWA2M5XfFcChRH7EGmptlIezLnlqdHJe'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json"}'          
+          file: "${{ github.workspace }}/${{ matrix.file }}"
+          data: '{"key_1": "${{ github.workspace }}/${{ matrix.file }}"}'
+          
+
+  post-files-modified:
+    needs: prepare-files
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        file: ${{ fromJSON(needs.prepare-files.outputs.matrix-modified) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Echo file
+        run: |
+          echo ${{ matrix.file }} # to test if the correct file was passed
+
+      - name: Make an API call
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://elastic.snaplogic.com/api/1/rest/slsched/feed/AstraZeneca/projects/parthiban%20selvam/accEx%20Task?bearer_token=xWA2M5XfFcChRH7EGmptlIezLnlqdHJe'
+          method: 'POST'
+          customHeaders: '{"Content-Type": "application/json"}'          
+          file: "${{ github.workspace }}/${{ matrix.file }}"
+          data: '{"key_1": "${{ github.workspace }}/${{ matrix.file }}'
