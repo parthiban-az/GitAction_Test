@@ -61,3 +61,5 @@ jobs:
           customHeaders: '{"Content-Type": "application/json"}'          
           file: "${{ github.workspace }}/${{ matrix.file }}"
           data: '{"key_1": "${{ github.workspace }}/${{ matrix.file }}'
+          timeout: '30000'
+          
