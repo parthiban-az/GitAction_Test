@@ -5,8 +5,6 @@ name: CI
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -27,7 +25,7 @@ jobs:
       - name: make call to Public API
         uses: fjogeleit/http-request-action@v1
         with: 
-          url: 'https://elastic.snaplogic.com/api/1/rest/public/project/checkout/AstraZeneca/projects/parthiban%2520selvam'
+          url: 'https://elastic.snaplogic.com/api/1/rest/public/project/checkout/AstraZeneca/projects/SOA_MIGRATION'
           method: POST
           customHeaders: '{"Content-Type": "application/json", "Authorization": "Basic cGFydGhpYmFuLnNlbHZhbUBhc3RyYXplbmVjYS5jb206V2VsY29tZUAxMjM="}'
           data: '{"repo": "/parthiban-az/GitAction_Test", "ref": "heads/main", "hard_reset": false, "discard_untracked_file" : false}'
