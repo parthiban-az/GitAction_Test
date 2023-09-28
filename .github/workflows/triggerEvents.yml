@@ -29,7 +29,8 @@ jobs:
         with: 
           url: 'https://elastic.snaplogic.com/api/1/rest/public/project/checkout/AstraZeneca/projects/parthiban%2520selvam'
           method: POST
-          customHeaders: '{"Content-Type": "application/json", "Authorization": "Basic a2xreDU2ODpBdDMzOThicQ=="}'
+          contentType: 'application/json'
+          authorization: 'Basic a2xreDU2ODpBdDMzOThicQ=='
           data: '{"repo": "/parthiban-az/GitAction_Test", "ref": "heads/main", "hard_reset": "true", "discard_untracked_file" : "true"}'
           timeout: '30000'
       
