@@ -28,14 +28,7 @@ jobs:
       - name: make call to Public API
         env: 
           tokenValue: ${{ secrets.AUTHVALUE}}
-        uses: fjogeleit/http-request-action@v1
-        with: 
-          url: 'https://elastic.snaplogic.com/api/1/rest/public/project/checkout/AstraZeneca/projects/SOA_MIGRATION'
-          method: POST
-          contentType: 'application/json'
-          customHeaders: ${{ toJSON(env.tokenValue) }}
-          data: '{"repo": "parthiban-az/GitAction_Test", "ref": "heads/main", "hard_reset": false, "discard_untracked_file" : false}'
-          timeout: '30000'
+        run: echo "${{env.tokenValue}}"
               
 
       
