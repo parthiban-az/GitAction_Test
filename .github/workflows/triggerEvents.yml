@@ -27,7 +27,7 @@ jobs:
         with: 
           url: 'https://elastic.snaplogic.com/api/1/rest/public/project/checkout/AstraZeneca/projects/SOA_MIGRATION'
           method: POST
-          customHeaders: '{"Content-Type": "application/json", "Authorization": "Basic cGFydGhpYmFuLnNlbHZhbUBhc3RyYXplbmVjYS5jb206V2VsY29tZUAxMjM="}'
+          customHeaders: '{"Content-Type": "application/json", "Authorization": ${{ secrets.AUTHVALUE }}}'
           data: '{"repo": "parthiban-az/GitAction_Test", "ref": "heads/main", "hard_reset": false, "discard_untracked_file" : false}'
           timeout: '30000'
       
