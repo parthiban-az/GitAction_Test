@@ -36,7 +36,7 @@ jobs:
             method: POST
             contentType: 'application/json'
             customHeaders: ${{secrets.AUTHVALUE}}
-            data: ${{ toJson(env.data1) }}
+            data: $data1
             timeout: '30000'
             
 
