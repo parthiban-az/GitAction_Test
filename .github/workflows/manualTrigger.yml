@@ -29,14 +29,10 @@ jobs:
             token: ${{secrets.AUTHVALUE}}
             branch: heads/${{github.event.inputs.branch}}
             url: https://elastic.snaplogic.com/api/1/rest/public/project/checkout/${{github.event.inputs.envn}}/projects/SOA_MIGRATION
+            data1: '{"repo": "parthiban-az/GitAction_Test", "ref": $branch, "hard_reset": false, "discard_untracked_file" : false}'
+            run: |
+              echo $url
             
-          uses: fjogeleit/http-request-action@v1
-          with: 
-            url: $url
-            method: POST
-            contentType: 'application/json'
-            customHeaders: ${{secrets.AUTHVALUE}}
-            data: '{"repo": "parthiban-az/GitAction_Test", "ref": $branch, "hard_reset": false, "discard_untracked_file" : false}'
-            timeout: '30000'
+
                           
               
