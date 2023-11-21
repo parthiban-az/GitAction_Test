@@ -18,3 +18,4 @@ jobs:
     - run: |
         echo "Env: ${{ github.event.inputs.environment }}" 
         echo "Branch: ${{ github.event.inputs.branch }}"
+        git branch  ${{ github.event.inputs.branch }}
