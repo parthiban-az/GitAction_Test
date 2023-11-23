@@ -1,4 +1,4 @@
-name: sample Manual
+name: Branch Creation
 
 on: 
   workflow_dispatch:
