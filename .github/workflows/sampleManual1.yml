@@ -18,4 +18,5 @@ jobs:
     - run: |
         echo "Env: ${{ github.event.inputs.environment }}" 
         echo "Branch: ${{ github.event.inputs.branch }}"
+        cd  GitAction_Test
         git branch  ${{ github.event.inputs.branch }}
