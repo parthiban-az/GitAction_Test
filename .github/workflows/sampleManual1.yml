@@ -18,5 +18,8 @@ jobs:
     - run: |
         echo "Env: ${{ github.event.inputs.environment }}" 
         echo "Branch: ${{ github.event.inputs.branch }}"
-        git init
-        git branch  ${{ github.event.inputs.branch }}
+        git checkout main
+        git branch development
+        git checkout development
+        git commit -m "Commit message"
+        git push -u origin development
